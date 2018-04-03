@@ -1,7 +1,7 @@
 # CSE 185 Lab Notebook - Week 1
 
-#### Name: XXX
-#### Date: XXX
+#### Name: Luke Jervis
+#### Date: 04/03/18
 
 # Markdown examples (you can delete everything below here once you've got the idea)
 
