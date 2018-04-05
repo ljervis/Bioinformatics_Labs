@@ -76,3 +76,43 @@ BCCDDFFFGHHHHJIIIJHIIJJJIJJJIIIJGIJHIIIJJJIJJJJIJIHIJBFGIGJJJJFAEEFFFFFFCE@EEEDD
 Average coverage = # sequence bases / length of genome
 
 Average coverage = 101*(14214080/4)/4708034 = 77x
+
+# Part II
+
+__Input/Output__
+1. fastqc -h
+The manual page was displayed indicating the program was correctly set up
+2. fastqc -o . /home/linux/ieng6/cs185s/public/week1/amp_res_2.fastq
+generated two files: amp_res_2_fastqc.html amp_res_2_fastqc.zip
+3. fastqc -o . /home/linux/ieng6/cs185s/public/week1/amp_res_1.fastq
+generated two files: amp_res_1_fastqc.html amp_res_1_fastqc.zip
+4. pscp ljervis@ieng6.ucsd.edu:/home/linux/ieng6/oce/8m/ljervis/week1/amp_res_1_fastqc.html C:/Users/lukej/Desktop/
+transfered previously generated html file to my computer
+number of reads previously determined: 3555520
+number of reads determined by fastqc: 3553520
+Basic statistics: green
+Per base sequence quality: red
+Per tile sequence quality: red 
+Per sequence quality scores: green 
+Per base sequence content: yellow
+Per sequence GC centent: yellow
+Per base N content: green
+Sequence Length Distribution: green 
+Sequence Duplication Levels: yellow
+Overrepresented seqences: green
+Adapter Content: green 
+5. pscp ljervis@ieng6.ucsd.edu:/home/linux/ieng6/oce/8m/ljervis/week1/amp_res_2_fastqc.html C:/Users/lukej/Desktop/
+transfered previously generated html file to my computer
+number of reads previously determined: 3555520
+number of reads determined by fastqc: 3553520
+Basic statistics: green
+Per base sequence quality: red
+Per tile sequence quality: yellow 
+Per sequence quality scores: green 
+Per base sequence content: red 
+Per sequence GC centent: yellow
+Per base N content: green
+Sequence Length Distribution: green
+Sequence Duplication Levels: yellow
+Overrepresented seqences: green
+Adapter Content: green
