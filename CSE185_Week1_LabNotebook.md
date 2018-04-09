@@ -195,5 +195,69 @@ in total does not match my read count after trimming but is very close (6906203 
 21. samtools index sortedtrimpaired.bam
 22. samtools tview sortedtrimpaired.bam NC_000913.3.fasta
 a visual representation of the sam file is presented
-jumped to position 46 using NC:000913.3:46 to see varients at this base. There is a read with a varient "A" in this position. Only one read shares this varient so I would argue this is a sequencing mistake. 
-23. 
+jumped to position 46 using NC:000913.3:46 to see varients at this base. There is a read with a varient "A" in this position. Only one read shares this varient so I would suspect this is a sequencing mistake. 
+23. samtools mpileup -f NC_000913.3.fasta sortedtrimpaired.bam > my.mpileup
+[mpileup] 1 samples in 1 input files
+<mpileup> Set max per-file depth to 8000
+ 24. head -n 100 my.mpileup
+  NC_000913.3     1       A       31      ^].^],^],^],^],^],^],^],^],^],^],^],^],^                         ],^],^],^],^],^],^],^],^],^],^],^],^],^],^],^],^],^],   EEEEEE@@EEEEE?EEEEEEEEEE                         EEEEE?B
+NC_000913.3     2       G       35      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,^].  1                         C12IJJAIGAJIJ?IBHEIIEIJJIIJIIIGG9@
+NC_000913.3     3       C       35      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.    9                         A96JJJ>IGGJJIG?HADFHIJJGIJJIHGJEG@
+NC_000913.3     4       T       36      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.   ;                         C;HIJJGJEHJHG9JDG>IIEJJJJJJJGG@JAIB
+NC_000913.3     5       T       36      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.   <                         D<FIJJGJEGJEG9JGIGII:IJJIIJJIIGJGHD
+NC_000913.3     6       T       35      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.    =                         C=FIJJHIFEJEIGJEJHGJJJJJGJJIIIJCHF
+NC_000913.3     7       T       36      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.   @                         D@IGJJFH@BIJFFI>IFIIEHJJIGJIJHHIEBF
+NC_000913.3     8       C       37      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.^].I                         CJGIJJBJHIJII?J<JHGHHIJJJIIJJBHJGGD?
+NC_000913.3     9       A       38      ....,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,..^].                         IDIGJJJHIBFIHHFIAJCCGGHIIGIGHIHEJEID@C
+25. curl -L https://sourceforge.net/projects/varscan/files/VarScan.v2.3.9.jar/download > VarScan.jar
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15801  100 15801    0     0  62703      0 --:--:-- --:--:-- --:--:-- 62952
+100   327  100   327    0     0   1000      0 --:--:-- --:--:-- --:--:--  1000
+100  108k  100  108k    0     0   241k      0 --:--:-- --:--:-- --:--:--  241k
+26. java -jar VarScan.jar mpileup2snp my.mpileup --min-var-freq 0.7 --varients --output-vcf 1 > VarScan.vcf
+Only SNPs will be reported
+Warning: No p-value threshold provided, so p-values will not be calculated
+Min coverage:   8
+Min reads2:     2
+Min var freq:   0.7
+Min avg qual:   15
+P-value thresh: 0.01
+Reading input from my.mpileup
+4641643 bases in pileup file
+9 variant positions (6 SNP, 3 indel)
+0 were failed by the strand-filter
+6 variant positions reported (6 SNP, 0 indel)
+  26. cat VarScan.vcf
+  #CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  Sample1
+NC_000913.3     92439   .       G       A       .       PASS    ADP=147;WT=0;HET=0;HOM=1;NC=0   GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:147:147:1:146:99.32%:1.0001E-85:35:39:1:0:72:74
+NC_000913.3     803662  .       C       A       .       PASS    ADP=105;WT=0;HET=0;HOM=1;NC=0   GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:105:105:0:105:100%:1.1051E-62:0:42:0:0:47:58
+NC_000913.3     852762  .       A       G       .       PASS    ADP=148;WT=0;HET=0;HOM=1;NC=0   GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:148:148:0:148:100%:1.6951E-88:0:38:0:0:117:31
+NC_000913.3     1905761 .       G       A       .       PASS    ADP=116;WT=0;HET=0;HOM=1;NC=0   GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:118:116:0:116:100%:2.7689E-69:0:40:0:0:68:48
+NC_000913.3     3535147 .       A       C       .       PASS    ADP=78;WT=0;HET=0;HOM=1;NC=0    GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:78:78:0:78:100%:1.7165E-46:0:34:0:0:46:32
+NC_000913.3     4390754 .       G       T       .       PASS    ADP=107;WT=0;HET=0;HOM=1;NC=0   GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR     1/1:255:108:107:0:107:100%:6.972E-64:0:35:0:0:68:39
+
+  
+| position | reference | alternative base | varient allele frequency | 
+| -------- | --------- | ---------------- | ------------------------ |
+| 92439 | G | A | 99.32 |
+| 803662 | C | A | 100 |
+| 852762 | A | G | 100 |
+| 1905761 | G | A | 100 |
+| 3535147 | A | C | 100 |
+| 4390754 | G | T | 100 |
+
+27. awk '{if (NR>24) $1="Chromosome"; print}' VarScan.vcf > mymodVarScan.vcf
+28. pscp ljervis@ieng6.ucsd.edu:/home/linux/ieng6/oce/8m/ljervis/week1/mymodVarScan.vcf C:/Users/lukej/Desktop
+
+| Location | Type | Gene Name | Mutation | Substitution |
+| -------- | ---- | --------- | -------- | ------------ |
+| 92439 | Gene | b0084 | Missense | A |
+| 803662 | Gene | b0771 | Missense | A |
+| 852762 | Non-Coding | NA | NA | NA |
+| 1905761 | Gene | b1821 | Missense | A |
+| 3535147 | Gene | b3404 | Missense | C |
+| 4390754 | Gene | b1461 | Synonymous | T | 
+
+  
+
