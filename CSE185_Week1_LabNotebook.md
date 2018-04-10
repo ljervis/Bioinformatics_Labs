@@ -75,7 +75,7 @@ BCCDDFFFGHHHHJIIIJHIIJJJIJJJIIIJGIJHIIIJJJIJJJJIJIHIJBFGIGJJJJFAEEFFFFFFCE@EEEDD
 
 Average coverage = # sequence bases / length of genome
 
-Average coverage = 101*(14214080/4)/4708034 = 77x
+Average coverage = 101*(14214080*2/4)/4708034 = 155x
 
 # Part II
 
