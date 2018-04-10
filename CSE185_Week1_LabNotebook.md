@@ -117,17 +117,13 @@ Sequence Duplication Levels: yellow
 Overrepresented seqences: green
 Adapter Content: green
 6. sickle pe -f /home/linux/ieng6/cs185s/public/week1/amp_res_1.fastq -r /home/linux/ieng6/cs185s/public/week1/amp_res_2.fastq -t sanger -o trimpair1.fastq -p trimpair2.fastq -s singletons.fastq
-
 PE forward file: /home/linux/ieng6/cs185s/public/week1/amp_res_1.fastq
 PE reverse file: /home/linux/ieng6/cs185s/public/week1/amp_res_2.fastq
-
 Total input FastQ records: 7107040 (3553520 pairs)
-
 FastQ paired records kept: 6904494 (3452247 pairs)
 FastQ single records kept: 98694 (from PE1: 94870, from PE2: 3824)
 FastQ paired records discarded: 5158 (2579 pairs)
 FastQ single records discarded: 98694 (from PE1: 3824, from PE2: 94870)
-
 generated three files: trimpair1.fastq trimpair2.fastq singletons.fastq
 7. wc -l trimpair1.fastq
 13808988 trimpair1.fastq
@@ -148,14 +144,11 @@ generated two files: trimpair2_fastq.html trimpair2_fastq.zip
 14. sickle pe -q 30 -f /home/linux/ieng6/cs185s/public/week1/amp_res_1.fastq -r /home/linux/ieng6/cs185s/public/week1/amp_res_2.fastq -t sanger -o trimpair1_30.fastq -p trimpair2_30.fastq -s singletons_30.fastq
 PE forward file: /home/linux/ieng6/cs185s/public/week1/amp_res_1.fastq
 PE reverse file: /home/linux/ieng6/cs185s/public/week1/amp_res_2.fastq
-
 Total input FastQ records: 7107040 (3553520 pairs)
-
 FastQ paired records kept: 6012550 (3006275 pairs)
 FastQ single records kept: 375230 (from PE1: 283732, from PE2: 91498)
 FastQ paired records discarded: 344030 (172015 pairs)
 FastQ single records discarded: 375230 (from PE1: 91498, from PE2: 283732)
-
 generated three files: trimpair1_30.fastq trimpair2_30.fastq singletons_30.fastq
 15. bwa index NC_000913.3.fasta
 [bwa_index] Pack FASTA... 0.04 sec
