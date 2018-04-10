@@ -2,12 +2,10 @@
 ##### Luke Jervis
 
 ## Abstract
-In no more than 100 words, briefly summarize what was done in the lab this week, what the findings were, and why they were important.
 
-The goal of this lab was to identify causes of ampicillin antibiotic resistance in a strain of E. coli. Identification of mutations responsible for conferring antibiotic resistance were found through sequence analysis using paired end sequencing reads in fastq files and a reference genome in a fasta file. Identifying the mechanism of resistance is an important discovery as it can be used by clinicians when deciding the most effective treatment for a patient who is infected with this particular strain of E. coli. This knowledge can also be used by scientists interested in creating new drugs to battle antibiotic resistant E coli.   
+The goal of this lab was to identify causes of ampicillin antibiotic resistance in a strain of E. coli. Identification of mutations responsible for conferring antibiotic resistance were found through sequence analysis using paired end sequencing reads in fastq files and a reference genome in a fasta file. Identifying the mechanism of resistance is an important discovery as it can be used by clinicians when deciding the most effective treatment for a patient who is infected with this particular strain of E. coli. This knowledge can also be used by scientists interested in creating new drugs to battle antibiotic resistant E coli. It was identified that this particular strain of E. coli was likely to be conferring resistance by reducing the amount of ampicillin in the cell.   
 
 ## Introduction
-In 2-3 paragraphs, provide enough background information to understand the biology behind the weeks project. Be sure to state what problem or question the week’s lab work addressed, and why it is important. You must cite at least one scientific journal article for this section (it can, but doesn’t have to be, the assigned reading). When you use outside resources, use in-text citations in the text attributing any ideas or information from materials outside of our course lecture or tutorial. In-text citations give the source for information right where it is written (1).
 
 The common course of action when a patient is diagnosed with an E. coli bacterial infection is to prescribe the antibiotic ampicillin. Unfortunately there are strains of E coli. that are resistant to this antibiotic, making treatment with ampicillin less effective. Ampicillin targets the protein transpeptidase which is responsible for cross linking peptidoglycan. Disruption of transpeptidase impedes the bacteria’s ability to synthesize a cell wall leading to death. Other antibiotics have different cellular targets like the cell membrane, essential enzymes, protein synthesis. Antibiotics can be either bacteriostatic, stopping the bacteria from reproducing while not necessarily killing them. Other antibiotics are bactericide, killing the bacteria themselves. Ampicillin is an example of a bacteriostatic antibiotic. Unfortunately bacteriostatic antibiotics are at higher risk of conferring resistance because advantageous mutations that bacteria may acquire can be shared with others in the population even though the individual is unable to reproduce. 
 
@@ -47,7 +45,7 @@ The following table summarizes the initial number of reads in our sequencing dat
 | ------------------ | ------------------------ | ------------------ |
 | 7107040 | 6904494 | 6899109 |
 
-EcoliWiki was used to gather information about the genes that were affected by these mutations and possible cellular effects of the mutations. The results are summarized in the table below. 
+EcoliWiki and google was used to gather information about the genes that were affected by these mutations and possible cellular effects of the mutations. The results are summarized in the table below. 
 
 | Gene Name | Function | Possible Cellular Effects |
 | --------- | -------- | ------------------------- |
@@ -67,7 +65,7 @@ Finally, the mutation of gene ftsL may also be of interest as it codes for a pro
 
 Given all the data we have gathered and my research I would hypothesize that this strains main mechanism of resistance is by reducing the amount of drug in the cell by efflux pumps and decreasing permeability. Given this hypothesis I would recommend a hydrophobic antibiotic such as a cephalosporin.  
 
-Whole genome sequencing of this strain may have identified rare mutations that normal PCR based tests would not have tested for, thus providing us with a more thorough understanding.   
+Whole genome sequencing of this strain may have identified rare mutations that normal PCR based tests would not have tested for, thus providing us with a more thorough understanding of mutations in this strain.   
 
 ## Citations
 Peacock, Sharon. “Health Care: Bring Microbial Sequencing to Hospitals.” Nature, vol. 509, no. 7502, 2014, pp. 557–559., doi:10.1038/509557a.
