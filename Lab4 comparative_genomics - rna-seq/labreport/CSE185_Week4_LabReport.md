@@ -1,3 +1,4 @@
+
 # Comparative Genomics Investigation of Limb Development Across Species
 ##### Luke Jervis
 
@@ -59,7 +60,7 @@ Differential gene expression data was quantified using TPM values by Kallisto. C
 | __MB_Rep1__ | 0.957 | 0.960 | 0.936 | 0.935 | ----- | __0.991__ |
 | __MB_Rep2__ | 0.946 | 0.952 | 0.926 | 0.926 | __0.991__ | ----- |
 
-After verifying that TPM values were computed correctly, Sleuth was used to identify differentially expressed transcripts using the Kallisto output. There were __1940__ significant deferentially expressed transcripts outputted from sleuth  (qval <= 0.05) . The ten most significant transcripts were looked up for their genes of origin in the Enseble *Mus musculus* database (http://uswest.ensembl.org/Mus_musculus/Info/Index) and visualized using the IGV browser. 
+After verifying that TPM values were computed correctly, Sleuth was used to identify differentially expressed transcripts using the Kallisto output. There were __1940__ significant differentially expressed transcripts outputted from sleuth  (qval <= 0.05) . The ten most significant transcripts were looked up for their genes of origin in the Enseble *Mus musculus* database (http://uswest.ensembl.org/Mus_musculus/Info/Index) and visualized using the IGV browser. 
 
 Screenshots from the IGV browser for the first seven results are shown below (Figures 1 - 7) in order of significance and can be viewed in the labreport folder.
 
@@ -117,7 +118,32 @@ Multiple sequence alignment was preformed in the *ZRS* region between species wi
 
 ![](https://github.com/cse185-sp18/cse185-week4-ljervis/blob/master/labreport/Snake_1.JPG) 
 
-## Discussion (2 pts)
+### Extra Credit 
+
+A python script was used to aggregate all TPM values from the kallisto output files into a tab delininated file and a heatmap was created with the online tool Morpheus (12.) (Figure 12.). Hierarchical clustering was completed using one minus person correlation and average linkage method. Looking at the columns we see that the replicate samples cluster together. Furthermore, the HL and FL replicates cluster together before MB as expected. Looking at the rows we see a clear pattern of differentiation between genes in the HL and FL samples compared to the MB samples. Many genes up-regulated in HL/FL samples are down regulated in MB samples and vice versa.
+
+#### Figure 12. Heatmap of TPM Values With Clusters. 
+
+![](https://github.com/cse185-sp18/cse185-week4-ljervis/blob/master/labreport/MorpheusHeatMapWithClustering.JPG)
+
+Geno ontology was preformed for the top 10 differentially expressed genes using the Panther database (13.). 
+
+#### Table 2. Gene Ontology Results
+
+| Gene | GO Biological Processes | GO Molecular Functions |
+|------|-------------------------|------------------------|
+| Rpl21 | - | Protein binding; structural constituent of ribosomes |
+| Shh | lung, tongue, skin, hair, eye, and kidney development | protein binding; metal ion binding; peptidase activity |
+| Gltp | lipid transport | protein binding; lipid binding; glycolipid binding |
+| Ubl3 | - | - |
+| Garem2 | - | - |
+| Parm1 | positive regulation of telomerase activity | - |
+| Sparcl1 | signal transduction; anatomical structural development | extracellular matrix binding; collagen binding; metal and calcium binding |
+| Nat8l | positive regulation of dopamine uptake | transferase activity |
+| Uchl1 | Cell proliferation; negative regulation of MAP kinase; neuromuscular process | protease activity; ligase activity |
+| Hmgn2 | negative regulation of transcription by RNA Pol II; regulation of development | - |
+
+## Discussion
 
 *Shh* is a gene encoding a protein, Sonic Hedgehog, which functions as a chemical signal during early development. Among other things, this signal coordinates the development of limbs and digits making it an interesting target for study in our investigation. Interestingly *Shh* was identified as being differentially expressed in our analysis of hind limb (HL), fore limb (FL), and mid-brain (MB) tissues. Both HL and FL had strong *Shh* transcript abundance signals while MB showed significantly less. Upon analysis of gene activating histone modifications ( H3K4me1 and H3K27ac) in this region we saw strong signals in both the HL and FL tissues but weak signals in the MB tissue. These insights support the belief that *Shh* is highly expressed in limb specific tissues and not others. 
 
@@ -125,12 +151,7 @@ The highly conserved *ZRS* enhancer controls the expression of *Shh* in differen
 
 This deletion may inhibit the up-regulation of *Shh* by the *ZRS* enhancer decreasing the transcription of *Shh* gene. It is possible that this deleted region constituted a binding site for a transcription factor (TF). Left unable to bind this deletion would inhibit any up-regulation the TF might provide in other species with this conserved binding site. Members of the ETS family of transcription factors bind to the *ZRS* enhancer region and provide *Shh* gene regulation (3.). In order to test whether these ETS TF's bind to the *ZRS* region at this identified region, further experiments are needed. A gel shift assay know as EMSA can determine specific protein-DNA interaction. Although not used in this study, future EMSA assays could help determine whether the deleted region we identified constitutes a binding site for ETS transcription factors. 
 
-
-* Summarize your analysis of the ZRS region and your interpretation of its involvement in determining whether an organism develops limbs or not.
-* We identified the ZRS region based on knowledge from previous literature. Are there other enhancers that appear to be both limb-specific an highly conserved nearby Shh? If you wanted to identify these regions computationally how would you do it?
-* Do you have any hypotheses about why the identified mutations might lead to a loss of legs in snakes? What further experiments or analyses could be done to determine the function of this sequence?
-
-## Citations (1 pt)
+## Citations
 
 (1.) Gymrek, MG. (2018). cse185-spring18-week4. UCSD.
 
@@ -154,3 +175,7 @@ This deletion may inhibit the up-regulation of *Shh* by the *ZRS* enhancer decre
 (10.) Harold J. Pimentel, Nicolas Bray, Suzette Puente, Páll Melsted and Lior Pachter, [Differential analysis of RNA-Seq incorporating quantification uncertainty](http://www.nature.com/nmeth/journal/vaop/ncurrent/full/nmeth.4324.html), Nature Methods (2017), advanced access http://dx.doi.org/10.1038/nmeth.4324.
 
 (11.) Robinson JT, Thorvaldsdóttir H, Winckler W, et al. Integrative Genomics Viewer. _Nature biotechnology_. 2011;29(1):24-26. doi:10.1038/nbt.1754.
+
+(12.) https://software.broadinstitute.org/morpheus/#
+
+(13.) Huaiyu Mi, Xiaosong Huang, Anushya Muruganujan, Haiming Tang, Caitlin Mills, Diane Kang, and Paul D. Thomas Nucl. Acids Res. (2016) doi: 10.1093/nar/gkw1138
