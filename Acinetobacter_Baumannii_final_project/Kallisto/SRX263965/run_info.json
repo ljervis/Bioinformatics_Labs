@@ -1,0 +1,13 @@
+{
+	"n_targets": 3435,
+	"n_bootstraps": 100,
+	"n_processed": 2712716,
+	"n_pseudoaligned": 2594196,
+	"n_unique": 240687,
+	"p_pseudoaligned": 95.6,
+	"p_unique": 8.9,
+	"kallisto_version": "0.44.0",
+	"index_version": 10,
+	"start_time": "Sat Jun  9 17:15:21 2018",
+	"call": "kallisto quant -t 3 -i ./RefSeq/NC_009085.1.kallisto.idx -o ./KallistoOutputTrimmedNC_009085.1/ -b 100 ./Fastqc/SRX263965/SRX263965_1_trimmed.fastq ./Fastqc/SRX263965/SRX263965_2_trimmed.fastq"
+}
